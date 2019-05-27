@@ -5,11 +5,13 @@ const NINE = {
     statefulObject: function(initalState) {
         this._state = initalState;
         this._eventListeners = {};
+        this._deactivated = new Set();
         this.addListener = (name, eventListener) => {
             this._eventListeners[name] = eventListener;
         };
         this._callListener = (name) => {
-            this._eventListeners[name](this._state);
+            if (!this._deactivated.has(name))
+                this._eventListeners[name](this._state);
         };
         this._callListeners = () => {
             Object.keys(this._eventListeners).forEach((key, index) => {
@@ -23,6 +25,18 @@ const NINE = {
         this.getState = () => {
             return this._state;
         };
+        this.deavtivate = (name) => {
+            this._deactivated.add(name);
+        };
+        this.avtivate = (name) => {
+            if (this._deactivated.has(name)) {
+                this._deactivated.delete(name);
+            }
+        };
+        this.removeListener = (name) => {
+            this.avtivateListener(name);
+            this._eventListeners[name] = null;
+        };
     }
 };
 
@@ -30,4 +44,6 @@ export {
     NINE
 };
 
-window.NINE = NINE;
+if (window) {
+    window.NINE = NINE;
+}

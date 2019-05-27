@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="dist/nine.min.js"></script>
+    <script>
+        const stateful = new NINE.statefulObject({
+            name: 'Artin',
+            age: 14
+        });
+        stateful.addListener('loader', function (state) {
+            console.log(state.age * 2);
+        });
+        stateful.addListener('table-states', function (state) {
+            console.table(state);
+        });
+        stateful.deavtivate('loader');
+        stateful.setState({
+            name: 'Ali'
+        });
+        stateful.avtivate('loader');
+        stateful.setState({
+            name: 'Ali',
+            age: 19
+        });
+    </script>
+</body>
+
+</html>
