@@ -22,9 +22,16 @@
         stateful.addListener('table-states', function (state) {
             console.table(state);
         });
+        stateful.deavtivate('loader');
         stateful.setState({
             name: 'Ali'
         });
+        stateful.avtivate('loader');
+        stateful.setState({
+            name: 'Ali',
+            age: 19
+        });
+        stateful.removeListener('loader');
     </script>
 </body>
 
