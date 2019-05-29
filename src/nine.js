@@ -1,4 +1,4 @@
-const NINE = {
+export const NINE = {
     v: () => {
         console.info("Nine.js version 1.0.0");
     },
@@ -61,10 +61,6 @@ const NINE = {
     }
 };
 
-export {
-    NINE
-};
-
-if (window) {
+if (typeof window !== "undefined") {
     window.NINE = NINE;
 }
