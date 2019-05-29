@@ -12,7 +12,7 @@
 
     <script src="dist/nine.min.js"></script>
     <script>
-        const stateful = new NINE.statefulObject({
+        let stateful = new NINE.StatefulObject({
             name: 'Artin',
             age: 14
         });
@@ -31,7 +31,23 @@
             name: 'Ali',
             age: 19
         });
-        stateful.removeListener('loader');
+
+        // --------------------------------------------------------------------------------------------------------------
+        sessionStorage.setItem('i', 0);
+
+        let statist = new NINE.Subscriber(
+            () => {
+                sessionStorage.setItem('i', parseInt(sessionStorage.getItem('i')) + 1);
+                console.log(sessionStorage.getItem('i'));
+                return sessionStorage.getItem('i');
+            },
+            (state, unsubscribe) => {
+                console.log(state);
+                if (state == 20) {
+                    unsubscribe();
+                }
+            }
+        );
     </script>
 </body>
 
