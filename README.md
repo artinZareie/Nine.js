@@ -31,9 +31,9 @@ How to make an subscriber and an stateful object:
         stateful.setState({
             name: 'Ali',
             age: 19
-        });
-        sessionStorage.setItem('i', 0);
-
+        });`
+        
+        `sessionStorage.setItem('i', 0);
         let statist = new NINE.Subscriber(
             () => {
                 sessionStorage.setItem('i', parseInt(sessionStorage.getItem('i')) + 1);
