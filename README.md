@@ -32,8 +32,6 @@ How to make an subscriber and an stateful object:
             name: 'Ali',
             age: 19
         });
-
-        // --------------------------------------------------------------------------------------------------------------
         sessionStorage.setItem('i', 0);
 
         let statist = new NINE.Subscriber(
