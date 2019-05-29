@@ -61,6 +61,4 @@ const NINE = {
     }
 };
 
-export {
-    NINE
-};
+module.exports = NINE;
