@@ -13,6 +13,8 @@ INSTALL THIS LIBRARY
 # A Example
 How to make an subscriber and an stateful object:
 
+
+
 `let stateful = new NINE.StatefulObject({
             name: 'Artin',
             age: 14
