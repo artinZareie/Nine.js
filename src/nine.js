@@ -2,7 +2,7 @@ const NINE = {
     v: () => {
         console.info("Nine.js version 1.0.0");
     },
-    statefulObject: function(initalState) {
+    StatefulObject: function (initalState) {
         this._state = initalState;
         this._eventListeners = {};
         this._deactivated = new Set();
@@ -37,6 +37,27 @@ const NINE = {
             this.avtivateListener(name);
             this._eventListeners[name] = null;
         };
+    },
+    Subscriber: function (value, resolver) {
+        this.last_value = value();
+        this._subscription = true;
+        this.unsubscribe = () => {
+            this._subscription = false;
+        };
+        this.subscribe = () => {
+            this._subscription = true;
+        };
+
+        while (this._subscription) {
+            let res = value();
+            if (this.last_value !== res) {
+                resolver(res, () => {
+                    this.unsubscribe();
+                });
+            }
+            this._last_value = res;
+        }
+
     }
 };
 
