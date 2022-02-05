@@ -50,4 +50,4 @@ How to make an subscriber and an stateful object:
             }
         );`
         
-That easy! and too easier than RxJS!!!
+That easy! and much easier than RxJS!!!
